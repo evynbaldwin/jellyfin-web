@@ -83,6 +83,14 @@ const ServerDrawerSection = () => {
                 <ListItemText primary={globalize.translate('HeaderBranding')} />
             </ListItemLink>
             <ListItem disablePadding>
+                <ListItemLink to='/dashboard/tenants'>
+                    <ListItemIcon>
+                        <People />
+                    </ListItemIcon>
+                    <ListItemText primary={globalize.translate('HeaderTenants')} />
+                </ListItemLink>
+            </ListItem>
+            <ListItem disablePadding>
                 <ListItemLink to='/dashboard/users'>
                     <ListItemIcon>
                         <People />
