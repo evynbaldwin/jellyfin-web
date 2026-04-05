@@ -193,6 +193,7 @@ const Profile = ({ userDto }: ProfileProps) => {
             (userDto.Policy?.RemoteClientBitrateLimit / 1e6).toLocaleString(undefined, { maximumFractionDigits: 6 }) : '';
         (page.querySelector('#txtLoginAttemptsBeforeLockout') as HTMLInputElement).value = String(userDto.Policy?.LoginAttemptsBeforeLockout) || '-1';
         (page.querySelector('#txtMaxActiveSessions') as HTMLInputElement).value = String(userDto.Policy?.MaxActiveSessions) || '0';
+        (page.querySelector('#txtTenantID') as HTMLInputElement).value = String(userDto.TenantId) || '0';
         (page.querySelector('#selectSyncPlayAccess') as HTMLSelectElement).value = String(userDto.Policy?.SyncPlayAccess);
         loading.hide();
     }, [ userDto, libraryMenu ]);
@@ -560,6 +561,22 @@ const Profile = ({ userDto }: ProfileProps) => {
                         </div>
                         <div className='fieldDescription'>
                             {globalize.translate('OptionMaxActiveSessionsHelp')}
+                        </div>
+                    </div>
+                </div>
+                <div className='verticalSection'>
+                    <div className='inputContainer' id='fldTenantID'>
+                        <Input
+                            type='number'
+                            id='txtTenantID'
+                            label={globalize.translate('LabelTenantID')}
+                            min={0} step={1}
+                        />
+                        <div className='fieldDescription'>
+                            {globalize.translate('OptionTenantID')}
+                        </div>
+                        <div className='fieldDescription'>
+                            {globalize.translate('OptionTenantIDHelp')}
                         </div>
                     </div>
                 </div>
