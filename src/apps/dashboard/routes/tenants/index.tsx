@@ -11,7 +11,7 @@ import '../../../../styles/flexstyles.scss';
 import Page from '../../../../components/Page';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Toast from 'apps/dashboard/components/Toast';
-import { useUsers } from 'hooks/useUsers';
+import { useTenants } from 'hooks/useUsers';
 import Loading from 'components/loading/LoadingComponent';
 import { useDeleteUser } from 'apps/dashboard/features/users/api/useDeleteUser';
 import dom from 'utils/dom';
@@ -28,7 +28,7 @@ const UserProfiles = () => {
     const [ isSettingsSavedToastOpen, setIsSettingsSavedToastOpen ] = useState(false);
     const element = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
-    const { data: users, isPending } = useUsers();
+    const { data: users, isPending } = useTenants();
     const deleteUser = useDeleteUser();
 
     const handleToastClose = useCallback(() => {

@@ -22,12 +22,34 @@ const fetchUsers = async (
     return response.data;
 };
 
+const fetchTenants = async (
+    api: Api,
+    requestParams?: UserApiGetUsersRequest,
+    options?: AxiosRequestConfig
+) => {
+    const response = await getUserApi(api).getTenants(requestParams, {
+        signal: options?.signal
+    });
+
+    return response.data;
+};
+
 export const useUsers = (requestParams?: UserApiGetUsersRequest) => {
     const { api } = useApi();
     return useQuery({
         queryKey: [ QUERY_KEY ],
         queryFn: ({ signal }) =>
             fetchUsers(api!, requestParams, { signal }),
+        enabled: !!api
+    });
+};
+
+export const useTenants = (requestParams?: UserApiGetUsersRequest) => {
+    const { api } = useApi();
+    return useQuery({
+        queryKey: [ QUERY_KEY ],
+        queryFn: ({ signal }) =>
+            fetchTenants(api!, requestParams, { signal }),
         enabled: !!api
     });
 };
